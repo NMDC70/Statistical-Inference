@@ -6,7 +6,7 @@ output: pdf_document
 ---
 ## OVERVIEW
 
-The purpose of this report is to  investigate the exponential distribution in R and compare it with the Central Limit Theorem. We are going to simulate an exponential distribution and analyze its mean & variance. Comparison will be done between the throretical & sample values and we will show that for a thousand simulations the distribution of means approximates the normal distribution. 
+The purpose of this report is to  investigate the exponential distribution in R and compare it with the expectations set by the Lawe of Large Numbers & Central Limit Theorem. We are going to simulate an exponential distribution and analyze its mean & variance. Comparison will be done between the throretical & sample values and we will show that for a thousand simulations the distribution of means approximates the normal distribution. 
 
 ## Data, Output and Simulation
 
@@ -24,13 +24,13 @@ sim2 <- replicate(40, mean(rexp(40, 0.2)))
 cat("Mean =", mean(sim2), "SD =", sd(sim2), "Variance =", var(sim2), "\n")
 ```
 
-For the purpose of our analysis we will do a thousand simulations to generate the distribution of means. This is equivalent to taking random samples of 40 values from an exponential distribution and tabulating their mean, repeating the process a thousand times to obtain a thousand values of the mean (of a sampling distribution of size 40). 
+For the purpose of our analysis we will do a thousand simulations to generate the distribution of means. This is equivalent to taking random samples of 40 values from an exponential distribution and tabulating their mean, repeating the process a thousand times to obtain a thousand values of the mean. 
 
 ## LLN and CLT
 
-Our analysis we will be relying on the " Law of Large numbers (LLN)" and the "Central Limit Theorem (CLT)". Law of Large Numbers states that as the sample size grows the average of sampling distrubtions converge towards the population mean.The Central Limit Theorem states that as the sample size increases the distribution of sample averages approximates the Standard Normal.    
+Our analysis will check whether our simulated data folows the " Law of Large numbers (LLN)" and the "Central Limit Theorem (CLT)". Law of Large Numbers states that as the sample size grows the average of sampling distrubtions converge towards the population mean.The Central Limit Theorem states that as the sample size increases the distribution of sample averages approximates the Standard Normal.    
 LLN & CLT require that the variables are "Independent & Identically Distributed (iid)". The variables should have equal probability of occurance and they are mutually independent. Our purpose here is to see how well our simulated data follows LLN & CLT.    
-For higly skewed populations like our exponential distribution (see figure below) large sample sizes are required for close approximation to standard normal.
+For higly skewed populations like our exponential distribution (see figure below) large sample sizes are required for close approximation to standard normal.We are generating random data & which is taken as fulfilling the conditions of iid and the sample size at 40 is large enough for us to belive that our output should be as per LLN & CLT.
 
 ```{r, echo=FALSE, fig.height=3}
 hist(rexp(1000, 0.2), breaks = 36, xlab = "")
@@ -38,7 +38,7 @@ hist(rexp(1000, 0.2), breaks = 36, xlab = "")
 
 ## Comparison of Sample Mean & Theoretical Mean
 
-The LLN says that the sample mean of iid sample is converges to the population mean. We have already checked the conditions for iid. Comparision between Theoretical mean & sample mean from 10, 100, 1000 simulations is given below:
+The LLN says that the sample mean of iid samples converges to the population mean. Comparision between Theoretical mean & sample mean from 10, 100, 1000 simulations is given below:
 ```{r, echo=FALSE}
 m1 <- mean(replicate(1000, mean(rexp(40, 0.2))))
 cat("Theoretical mean = 5, Simulated Sample Mean(1000 simulations) =", m1, "\n")
@@ -86,7 +86,7 @@ ci <- quantile(g, probs = c(0.025, 0.975))
 cat("Two sigma limit", m - 2* std,  m + 2* std, " vs 95% ci ", ci, "\n")
 ```
 
-As we can see from the curve & the matching the 95% limits to calculated two sigma limits the our simulated distribution is closely approximating the Normal distribution. 
+As we can see from the curve & matching of the 95% limits to calculated two sigma limits our simulated distribution is closely approximating the Normal distribution. 
 
 
 ## Appendix 1 - References   
