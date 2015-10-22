@@ -13,7 +13,7 @@ knitr::opts_chunk$set(fig.path='Figs/',
 ## The Effect of Vitamin C on Tooth Growth in Guinea Pigs
 
 The response is the length of odontoblasts (teeth) in each of 10 guinea pigs at each of three dose levels of Vitamin C (0.5, 1, and 2 mg) with each of two delivery methods (orange juice - "OJ", or ascorbic acid - "VC")  
-10 Guinea Pigs (subjects), 6 observations per subject(2 delivery methods x 3 doses). We are measuring Tooth Growth in terms of length increase against 6 treatments as combination of 2 delivery medium & 3 dose combinations. In the report whether ever we mention tooth growth we are talking about length increase. 
+10 Guinea Pigs (subjects), 6 observations per subject(2 delivery methods x 3 doses). We are measuring Tooth Growth in terms of length increase against 6 treatments as combination of 2 delivery medium & 3 dose combinations. In the report wherever ever we mention tooth growth we are talking about length increase. 
 
 ```{r, echo=FALSE, fig.width=9.5}
 K <- ToothGrowth
@@ -25,6 +25,7 @@ g <- ggplot(K, aes(x = factor(GunieaPigs), y = len, group = factor(dose)), )
 g <- g + geom_line(size = 1, aes(colour = dose)) + facet_grid(.~supp) 
 g <- g + geom_point(size =3, pch = 15, fill = "brown", alpha = .5)
 g + theme(legend.position = "bottom") + labs(x = "Guniea Pigs", y = "Tooth Growth(length)")
+
 ```
 We have all 60 observations from the sampling distribution on the plot, Guniea Pigs on the x-axis, tooth growth on y, the plotted lines represent the three dose levels & the plots split for Orange juice & ascorbic acid. This assumes that the data is sequentially arranged so observation nos 1, 11, 21, 31, 41 & 51 are for the same Guinea Pig. Summary data for average tooth growth for each dosage type by the delivery method.
 
@@ -52,7 +53,7 @@ We will perform the Students t test for the above three cases. The first step in
 
 ## Case 1 - Overall Effectiveness of Delivery Methods
 
-We will perform the t test first with var.equal = FALSE i.e. the two population variances are not equal. This may not be the case as ultimately the data is on the same set of guniea pigs for the same medium of delivery for similar doses of Vitamin C but since we dont know we are checking for both situations. In all three cases we will work with a significance level of 5%
+We will perform the t test first with var.equal = FALSE i.e. the two population variances are not equal. This may not be the case as ultimately the data is on the same set of guniea pigs for the same medium of delivery for similar doses of Vitamin C but since we dont know we are checking for both situations. In all three cases we will work with a significance level of 5%.  
 Our Null hypothesis H0 is that both the delivery methods are equal. The differences of the means mu = 0.
 Alternate Hypothesis Ha is that mu > 0 and Orange Juice as a delivery medium on average delivers higher length of Tooth Growth compared to ascorbic acid.
 
@@ -104,7 +105,7 @@ The null hypothesis is rejected but the result is very close to our signifiacne 
 ## Appendix 1  
 
 References:
-1) Coursera Statistical Inference Course Notes.
+1) Coursera Statistical Inference Course Notes.  
 2) Stack Overflow, Quick R, Cran Documentation for code clarifications
 
 
@@ -137,7 +138,7 @@ library(knitr)
 kable(TG)
 ```
 
-3) For the Firt t.tests
+3) For t.tests  
 
 ```{r, eval=FALSE}
 VC <- ToothGrowth$len[1:30]
